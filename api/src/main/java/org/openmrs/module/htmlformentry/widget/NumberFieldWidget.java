@@ -115,6 +115,14 @@ public class NumberFieldWidget implements Widget {
     }
 
     @Override
+    public String getInitialValue() {
+        if (initialValue != null) {
+            return userFriendlyDisplay(initialValue);
+        }
+        return null;
+    }
+
+    @Override
     public String generateHtml(FormEntryContext context) {
         StringBuilder sb = new StringBuilder();
         if (context.getMode() == Mode.VIEW) {

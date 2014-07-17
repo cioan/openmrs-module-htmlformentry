@@ -27,9 +27,16 @@ public class PersonSearchWidget implements Widget {
     public void setInitialValue(Object initialValue) {
 	    person = (Person) initialValue;
     }
-	
-	
-	@Override
+
+    @Override
+    public String getInitialValue() {
+        if (person != null ) {
+            return person.toString();
+        }
+        return null;
+    }
+
+    @Override
     public String generateHtml(FormEntryContext context) {
 		
 		if (context.getMode() == Mode.VIEW) {

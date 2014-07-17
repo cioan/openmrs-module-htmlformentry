@@ -30,9 +30,13 @@ public class RelationshipWidget implements Widget {
     public void setInitialValue(Object initialValue) {
 	 
     }
-	
-	
-	@Override
+
+    @Override
+    public String getInitialValue() {
+        return null;
+    }
+
+    @Override
     public String generateHtml(FormEntryContext context) {
      
         StringBuilder sb = new StringBuilder();

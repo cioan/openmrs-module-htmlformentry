@@ -121,7 +121,16 @@ public class CheckboxWidget implements Widget {
         this.initialValue = initialValue;
     }
 
-	public String getToggleTarget() {
+    @Override
+    public String getInitialValue() {
+        if (initialValue != null ) {
+            return initialValue.toString();
+        }
+        return null;
+    }
+
+
+    public String getToggleTarget() {
 		return toggleTarget;
 	}
 

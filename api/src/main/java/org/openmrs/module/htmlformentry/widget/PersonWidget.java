@@ -26,8 +26,16 @@ public class PersonWidget implements Widget {
     public void setInitialValue(Object initialValue) {
 	    person = (Person) initialValue;
     }
-	
-	/**
+
+    @Override
+    public String getInitialValue() {
+        if (person !=null ){
+            return person.toString();
+        }
+        return null;
+    }
+
+    /**
 	 * Sets the Persons to use as options for this widget
 	 * 
 	 * @param options

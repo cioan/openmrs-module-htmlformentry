@@ -906,6 +906,17 @@ public class FormEntrySession {
     }
 
     /**
+     * @return a fragment of javascript that tells the existing values of Obs that are being audited
+     */
+    public String getFieldAuditJavascript() {
+        StringBuilder ret = new StringBuilder();
+        for (Map.Entry<String, String> e : context.getJavascriptFieldAuditInfo().entrySet()) {
+            ret.append("propertyAuditInfo['" + e.getKey() + "'] = " + e.getValue() + "\n");
+        }
+        return ret.toString();
+    }
+
+    /**
      * Returns the Encounter associated with the session
      */
     public Encounter getEncounter() {

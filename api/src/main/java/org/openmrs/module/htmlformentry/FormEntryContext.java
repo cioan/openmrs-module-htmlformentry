@@ -64,6 +64,7 @@ public class FormEntryContext {
     private Map<Widget, String> fieldNames = new HashMap<Widget, String>();
     private Map<Widget, ErrorWidget> errorWidgets = new HashMap<Widget, ErrorWidget>();
     private Map<String, String> javascriptFieldAccessorInfo = new LinkedHashMap<String, String>();
+    private Map<String, String> javascriptFieldAuditInfo = new LinkedHashMap<String, String>();
     private Translator translator = new Translator();
     private HtmlFormSchema schema = new HtmlFormSchema();
     private Stack<Map<ObsGroup, List<Obs>>> obsGroupStack = new Stack<Map<ObsGroup, List<Obs>>>();
@@ -779,12 +780,54 @@ public class FormEntryContext {
 		}
 		javascriptFieldAccessorInfo.put(property, val.toString());
     }
+
+    public void registerPropertyAuditInfo(String property, String widgetId,
+                                             String fieldFunctionName, String initialValue) {
+        if (widgetId == null)
+            return;
+        StringBuilder val = new StringBuilder("{ id: \"" + widgetId + "\" ");
+        if (fieldFunctionName != null){
+            val.append(", field: " + fieldFunctionName);
+        }
+        if (initialValue != null){
+            val.append(", value: " + initialValue);
+        }
+        val.append(" };");
+        if (javascriptFieldAuditInfo.containsKey(property)) {
+            // if this key has already been registered, this probably means we're inside a repeat tag.
+            // set it up as follows (assuming property="weight.value")
+            //   weight.value = X
+            //   weight.value_1 = X
+            //   weight.value_2 = Y
+            //   weight.value_3 = Z
+            // ...
+            int i = 1;
+            while (javascriptFieldAuditInfo.containsKey(property + "_" + i))
+                ++i;
+            if (i == 1) {
+                // this is the second time we hit this key (i.e. property is registered, but property_1 is not)
+                // we copy key to key_1
+                javascriptFieldAuditInfo.put(property + "_1", javascriptFieldAuditInfo.get(property));
+                i = 2;
+            }
+            property = property + "_" + i;
+        }
+        javascriptFieldAuditInfo.put(property, val.toString());
+    }
 	
     /**
      * @return the javascriptFieldAccessors
      */
     public Map<String, String> getJavascriptFieldAccessorInfo() {
     	return javascriptFieldAccessorInfo;
+    }
+
+    /**
+     *
+     * @return the javascriptFielAudit
+     */
+    public Map<String, String> getJavascriptFieldAuditInfo() {
+        return javascriptFieldAuditInfo;
     }
 
 	/**

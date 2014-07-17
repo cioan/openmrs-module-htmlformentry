@@ -65,5 +65,14 @@ public class PersonNameWidget implements Widget {
     public void setInitialValue(Object initialValue) {
 		this.initialValue = (PersonName) initialValue;
 	}
-	
+
+    @Override
+    public String getInitialValue() {
+        if (initialValue != null ) {
+            return initialValue.toString();
+        }
+        return null;
+    }
+
+
 }

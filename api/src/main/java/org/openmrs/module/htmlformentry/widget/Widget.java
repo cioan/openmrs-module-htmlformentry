@@ -16,6 +16,11 @@ public interface Widget {
     public void setInitialValue(Object initialValue);
 
     /**
+     * If we are doing a VIEW, EDIT or AUDIT, then this would return the initial value
+     */
+    public String getInitialValue();
+
+    /**
      * Called by the framework to draw this widget on a page
      * 
      * @return

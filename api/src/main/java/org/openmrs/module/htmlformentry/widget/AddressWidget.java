@@ -150,6 +150,11 @@ public class AddressWidget extends Gadget {
 		}
 	}
 
+    @Override
+    public String getInitialValue() {
+        return null;
+    }
+
 	@Override
 	protected void registerWidgets(FormEntryContext context) {
 		for (String key : widgetMap.keySet()) {

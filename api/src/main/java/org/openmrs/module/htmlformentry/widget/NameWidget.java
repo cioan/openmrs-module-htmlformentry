@@ -163,6 +163,11 @@ public class NameWidget extends Gadget {
 		}
 	}
 
+    @Override
+    public String getInitialValue() {
+        return null;
+    }
+
 	@Override
 	protected void registerWidgets(FormEntryContext context) {
 		for (TextFieldWidget textWidget : widgetMap.values()) {

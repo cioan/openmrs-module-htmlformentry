@@ -116,6 +116,14 @@ public class LocationWidget implements Widget {
 	public void setInitialValue(Object initialValue) {
 		location = (Location) initialValue;
 	}
+
+    @Override
+    public String getInitialValue() {
+        if (location != null) {
+            return location.toString();
+        }
+        return null;
+    }
 	
 	/**
 	 * Sets the Locations to use as options for this widget

@@ -74,6 +74,14 @@ public class DateTimeWidget implements Widget {
 		timeWidget.setInitialValue(initialValue);
 	}
 
+    @Override
+    public String getInitialValue() {
+        if (initialValue != null ) {
+            return initialValue.toString();
+        }
+        return null;
+    }
+
 	/**
 	 * Gets the DateWidget associated with this widget
 	 * 

@@ -288,6 +288,7 @@
 
 	<script>
 		var propertyAccessorInfo = new Array();
+        var propertyAuditInfo = new Array();
 		var beforeValidation = new Array();     // a list of functions that will be executed before the validation of a form
 		var beforeSubmit = new Array(); 		// a list of functions that will be executed before the submission of a form
 	</script>

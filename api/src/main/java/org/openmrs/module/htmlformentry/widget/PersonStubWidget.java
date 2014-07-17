@@ -28,7 +28,15 @@ public class PersonStubWidget implements Widget {
     public void setInitialValue(Object initialValue) {
         person = (PersonStub) initialValue;
     }
-    
+
+    @Override
+    public String getInitialValue() {
+        if (person != null) {
+            return person.toString();
+        }
+        return null;
+    }
+
     @Override
     public String generateHtml(FormEntryContext context) {
         if (context.getMode() == Mode.VIEW) {

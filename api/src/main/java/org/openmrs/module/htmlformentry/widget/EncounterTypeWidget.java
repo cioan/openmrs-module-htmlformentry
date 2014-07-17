@@ -79,6 +79,14 @@ public class EncounterTypeWidget implements Widget {
 	public void setInitialValue(Object initialValue) {
 		encounterType = (EncounterType) initialValue;
 	}
+
+    @Override
+    public String getInitialValue() {
+        if (encounterType != null ){
+            return encounterType.toString();
+        }
+        return null;
+    }
 	
 	/**
 	 * @see org.openmrs.module.htmlformentry.widget.Widget#getValue(org.openmrs.module.htmlformentry.FormEntryContext,

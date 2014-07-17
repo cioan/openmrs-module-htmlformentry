@@ -23,6 +23,14 @@ public class UploadWidget implements Widget {
 	public void setInitialValue(Object initialValue) {
 		this.initialValue = (Obs) initialValue;
 	}
+
+    @Override
+    public String getInitialValue() {
+        if (initialValue != null ) {
+            return WidgetFactory.displayComplexValue(initialValue);
+        }
+        return null;
+    }
 	
 	@Override
 	public String generateHtml(FormEntryContext context) {

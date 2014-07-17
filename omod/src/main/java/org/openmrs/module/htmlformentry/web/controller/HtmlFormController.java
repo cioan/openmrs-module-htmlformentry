@@ -83,6 +83,9 @@ public class HtmlFormController {
                 if (fes.getFieldAccessorJavascript() != null) {
                 	html += "<script>" + fes.getFieldAccessorJavascript() + "</script>";
                 }
+                if (fes.getFieldAuditJavascript() != null) {
+                    html += "<script>" + fes.getFieldAuditJavascript() + "</script>";
+                }
                 model.addAttribute("previewHtml", html);
             } catch (Exception ex) {
                 log.warn("Error rendering html form", ex);

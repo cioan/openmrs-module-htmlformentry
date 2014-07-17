@@ -32,6 +32,7 @@
 
 <script type="text/javascript">
 	var propertyAccessorInfo = new Array();
+    var propertyAuditInfo = new Array();
 	
 	// individual forms can define their own functions to execute before a form validation or submission by adding them to these lists
 	// if any function returns false, no further functions are called and the validation or submission is cancelled
@@ -462,6 +463,11 @@
 	<script type="text/javascript">
 		${command.fieldAccessorJavascript}
 	</script>
+</c:if>
+<c:if test="${not empty command.fieldAuditJavascript}">
+    <script type="text/javascript">
+        ${command.fieldAuditJavascript}
+    </script>
 </c:if>
 <c:if test="${not empty command.setLastSubmissionFieldsJavascript || not empty command.lastSubmissionErrorJavascript}"> 
 	<script type="text/javascript">

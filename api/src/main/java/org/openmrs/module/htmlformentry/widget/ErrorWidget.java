@@ -25,4 +25,8 @@ public class ErrorWidget implements Widget {
         throw new UnsupportedOperationException(); 
     }
 
+    @Override
+    public String getInitialValue() {
+        return null;
+    }
 }

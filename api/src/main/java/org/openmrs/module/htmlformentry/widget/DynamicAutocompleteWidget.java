@@ -126,6 +126,17 @@ public class DynamicAutocompleteWidget implements Widget {
         this.initialValues = new Vector<Concept>();
         initialValues.add((Concept) initialValue);
 	}
+    @Override
+    public String getInitialValue() {
+        if (!initialValues.isEmpty()) {
+            String toPrint = null;
+            for (int i = 0; i < initialValues.size(); i++) {
+                toPrint = toPrint + initialValues.get(i).getDisplayString() + ";";
+            }
+            return toPrint;
+        }
+        return null;
+    }
 
 	public void addInitialValue(Object initialValue) {
 		this.initialValues.add((Concept) initialValue);

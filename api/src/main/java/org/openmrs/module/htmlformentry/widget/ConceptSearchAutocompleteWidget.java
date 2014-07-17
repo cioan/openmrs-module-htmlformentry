@@ -105,4 +105,12 @@ public class ConceptSearchAutocompleteWidget implements Widget {
 		// TODO Auto-generated method stub
 		this.initialValue = (Concept) initialValue;
 	}
+
+    @Override
+    public String getInitialValue() {
+        if (initialValue != null) {
+            return initialValue.getDisplayString();
+        }
+        return null;
+    }
 }

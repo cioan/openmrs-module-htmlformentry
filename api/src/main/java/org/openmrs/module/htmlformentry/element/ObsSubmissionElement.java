@@ -967,9 +967,13 @@ public class ObsSubmissionElement implements HtmlGeneratorElement, FormSubmissio
 			ret.append("<span " + (id != null ?  "id=\"" + id + "\" " : "") +
                     "class=\"obs-field"+ (clazz !=null ? " " + clazz : "") + "\">");
 			context.registerPropertyAccessorInfo(id + ".value", context.getFieldNameIfRegistered(valueWidget),
-			    getFieldFunction(valueWidget), getGetterFunction(valueWidget), getSetterFunction(valueWidget));
-			context.registerPropertyAccessorInfo(id + ".date", context.getFieldNameIfRegistered(dateWidget),
-			    "dateFieldGetterFunction", null, "dateSetterFunction");
+                    getFieldFunction(valueWidget), getGetterFunction(valueWidget), getSetterFunction(valueWidget));
+
+            context.registerPropertyAuditInfo(id + ".value", context.getFieldNameIfRegistered(valueWidget),
+                    getFieldFunction(valueWidget), valueWidget.getInitialValue());
+
+            context.registerPropertyAccessorInfo(id + ".date", context.getFieldNameIfRegistered(dateWidget),
+                            "dateFieldGetterFunction", null, "dateSetterFunction");
 			context.registerPropertyAccessorInfo(id + ".error", context.getFieldNameIfRegistered(errorWidget), null, null,
 			    null);
 			context.registerPropertyAccessorInfo(id + ".accessionNumber",

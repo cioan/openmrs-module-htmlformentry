@@ -65,6 +65,14 @@ public class UserWidget implements Widget {
         user = (User) initialValue;
     }
 
+    @Override
+    public String getInitialValue() {
+        if (user != null ) {
+            return user.toString();
+        }
+        return null;
+    }
+
     /**
      * Sets the Users to use as options for this widget
      * 

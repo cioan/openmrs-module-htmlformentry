@@ -133,4 +133,11 @@ public class TimeWidget implements Widget {
 		initialValue = (Date) value;
 	}
 
+    @Override
+    public String getInitialValue() {
+        if (initialValue != null ) {
+            return initialValue.toString();
+        }
+        return null;
+    }
 }

@@ -44,6 +44,15 @@ public class RemoteJsonAutocompleteWidget implements Widget {
     }
 
     @Override
+    public String getInitialValue() {
+        if (initialValue != null ) {
+            return initialValue.toString();
+        }
+        return null;
+    }
+
+
+    @Override
     public String generateHtml(FormEntryContext context) {
         if (FormEntryContext.Mode.VIEW == context.getMode()) {
             return initialValue == null ? "" : initialValue.getLabel();
